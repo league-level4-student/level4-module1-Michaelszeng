@@ -38,12 +38,12 @@ public class IntroToTemplates {
 
 //Here a class is created that has a template called AotherTemplate
 //Class templates must be a class, not a primitive data type: int, float, double, boolean, long, short, byte
-class SomeClass<AnotherTemplate>{
+class SomeClass<T>{
 	//Here the t variable can be any object type
-	AnotherTemplate t;
+	T t;
 	
 	//Here the t2t variable can be any object type
-	SomeClass(AnotherTemplate t2){
+	SomeClass(T t2){
 		this.t = t2;
 	}
 }

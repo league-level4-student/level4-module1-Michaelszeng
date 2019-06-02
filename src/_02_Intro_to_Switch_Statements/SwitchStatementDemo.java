@@ -8,32 +8,20 @@ public class SwitchStatementDemo {
 		// The following two blocks of code are logically the same.
 		
 		{
-			int x = new Random().nextInt(3);
-			if(x == 0) { 
-				System.out.println("0");
-			} else if(x == 1) {
-				System.out.println("1");
-			} else if(x == 2) {
-				System.out.println("2");
-			} else {
-				System.out.println("Something went wrong :(");
-			}
-		}
-		
-		{
 			/*
 			 *  Remove the 'break;' statements and run it again.
 			 *  What did you notice? What does 'break;' do?
 			 */
 			int x = new Random().nextInt(3);
-			switch(x) {
-			case 0: 
+			switch("cat") {
+
+			case "dog": 
 				System.out.println("0");
 				break;
-			case 1: 
+			case "cat": 
 				System.out.println("1");
 				break;
-			case 2: 
+			case "yes": 
 				System.out.println("2");
 				break;
 			default: 

@@ -25,7 +25,22 @@ public class Snake {
 
 	public void feed() {
 		//1. add a new SnakeSegment object to the snake
-		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE));
+		int xfactor = 0;
+		int yfactor = 0;
+		if (currentDirection.equals(Direction.UP)) {
+			yfactor = -1;
+		}
+		else if (currentDirection.equals(Direction.DOWN)) {
+			yfactor = 1;
+		}
+		else if (currentDirection.equals(Direction.RIGHT)) {
+			xfactor = -1;
+		}
+		else {
+			xfactor = 1;
+		}
+		snake.add(new SnakeSegment(new Location(snake.get(snake.size()-1).getLocation().x+xfactor, 
+				snake.get(snake.size()-1).getLocation().y+yfactor), BODY_SIZE));
 	}
 
 	public Location getHeadLocation() {
@@ -124,7 +139,7 @@ public class Snake {
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
-		for (int i=0; i<snake.size()-1; i++) {
+		for (int i=1; i<snake.size()-1; i++) {
 			if (head.getLocation().equals(snake.get(i).getLocation())) {
 				return true;
 			}

@@ -88,13 +88,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch(choice) {
 		
 		case "Expert":
-			timer.setDelay(200);
+			timer.setDelay(150);
 			break;
 		case "Moderate":
-			timer.setDelay(400);
+			timer.setDelay(250);
 			break;
 		case "Beginner":
-			timer.setDelay(600);
+			timer.setDelay(400);
 			break;
 		}
 		//3. start the timer
@@ -142,8 +142,8 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private void setFoodLocation() {
 		//1. Create a new Location object that is set to a random location
-		int x = (int) Math.random() * 15;
-		int y = (int) Math.random() * 12;
+		int x = (int) (Math.random() * 15);
+		int y = (int) (Math.random() * 12);
 		//2. set the foodLocation variable equal to the Location object you just created.
 		//   use the snake's isLocationOnSnake method to make sure you don't put the food on the snake
 		foodLocation = new Location(x, y);
@@ -164,12 +164,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 		String choice = options[input];
 		if (choice.equals("YES")) {
-			int x = (int) Math.random() * 15;
-			int y = (int) Math.random() * 12;
+			int x = (int) (Math.random() * 15);
+			int y = (int) (Math.random() * 12);
 			snake.reset(new Location(x, y));
-			int xf = (int) Math.random() * 15;
-			int yf = (int) Math.random() * 12;
+			int xf = (int) (Math.random() * 15);
+			int yf = (int) (Math.random() * 12);
 			foodLocation = new Location(xf, yf);
+			startGame();
 		}
 		else { 
 			return;
@@ -186,16 +187,21 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//1. update the snake
 		snake.update();
 		//2. if the snake is colliding with its own body 
-		//   or if the snake is out of bounds, call gameOver
-		if (snake.isHeadCollidingWithBody() || snake.isOutOfBounds()) {
+		//   or if the snake is out of bounds, call `r
+		if (snake.isHeadCollidingWithBody()) {
+			System.out.println("collide");
+			gameOver();
+		}
+		if (snake.isOutOfBounds()) {
+			System.out.println("bounds");
 			gameOver();
 		}
 		//3. if the location of the head is equal to the location of the food,
 		// 	 feed the snake and set the food location
 		if (snake.getHeadLocation().equals(foodLocation)) {
 			snake.feed();
-			int x = (int) Math.random() * 15;
-			int y = (int) Math.random() * 12;
+			int x = (int) (Math.random() * 15);
+			int y = (int) (Math.random() * 12);
 			foodLocation = new Location(x, y);
 		}
 		//4. call panel.repaint();
